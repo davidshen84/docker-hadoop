@@ -14,7 +14,7 @@ ADD hadoop-2.7.3.tar.gz /opt/
 
 COPY opt/ /opt/
 COPY startup.sh /root/
-RUN mkdir -p /opt/hadoop-root
+RUN mkdir -p /opt/hadoop
 
 EXPOSE \
        # dfs.datanode.address
@@ -31,7 +31,8 @@ EXPOSE \
        8088 \
        # fs.defaultFS
        9000
-VOLUME ["/opt/hadoop-2.7.3"]
+
+VOLUME ["/opt/hadoop/"]
 WORKDIR /opt/hadoop-2.7.3/
 
 ENTRYPOINT ["/root/startup.sh"]
