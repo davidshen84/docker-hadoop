@@ -16,7 +16,21 @@ COPY opt/ /opt/
 COPY startup.sh /root/
 RUN mkdir -p /opt/hadoop-root
 
-EXPOSE 50070 8088 9000
+EXPOSE \
+       # dfs.datanode.address
+       50010 \
+       # dfs.datanode.ipc.address
+       50020 \
+       # dfs.namenode.http-address
+       50070 \
+       # dfs.datanode.http.address
+       50075 \
+       # yarn.nodemanager.webapp.address
+       8042 \
+       # yarn.resourcemanager.webapp.address
+       8088 \
+       # fs.defaultFS
+       9000
 VOLUME ["/opt/hadoop-2.7.3"]
 WORKDIR /opt/hadoop-2.7.3/
 

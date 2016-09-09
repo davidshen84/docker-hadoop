@@ -3,12 +3,13 @@
 OPTS=`getopt -o F --long format-namenode -n "$0" -- "$@"`
 eval set -- "$OPTS"
 
-format_namenode=""
+service ssh start
+ssh-keyscan localhost,0.0.0.0,`hostname` > ~/.ssh/known_hosts
 
 while true; do
   case "$1" in
     -F|--format-namenode)
-      format_namenode="$1"
+      bin/hdfs namenode -format
       shift
       ;;
     --) shift
@@ -20,9 +21,7 @@ while true; do
   esac
 done
 
-service ssh start
-ssh-keyscan localhost,0.0.0.0,`hostname` > ~/.ssh/known_hosts
-[ -n "$format_namenode" ] && bin/hdfs namenode -format
+
 sbin/start-dfs.sh
 sbin/start-yarn.sh
 
