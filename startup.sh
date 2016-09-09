@@ -25,7 +25,8 @@ while true; do
   esac
 done
 
-
+# Allow HDFS service to be access from outside
+sed -e "s/HOSTNAME/`hostname`/" -i /opt/hadoop-2.7.3/etc/hadoop/core-site.xml
 sbin/start-dfs.sh
 sbin/start-yarn.sh
 
