@@ -9,7 +9,7 @@ ONBUILD RUN apt-get update && apt-get install -y \
     ssh
 ONBUILD COPY .ssh /root/.ssh
 
-ADD hadoop-2.7.3.tar.gz /opt/
+ADD http://www-us.apache.org/dist/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.tar.gz /opt/
 
 COPY opt/ /opt/
 COPY startup.sh /root/
@@ -24,6 +24,10 @@ EXPOSE \
        50070 \
        # dfs.datanode.http.address
        50075 \
+       # yarn.app.mapreduce.am.job.client.port-range
+       50100-50200 \
+       # yarn.resourcemanager.address
+       8032 \
        # yarn.nodemanager.webapp.address
        8042 \
        # yarn.resourcemanager.webapp.address
