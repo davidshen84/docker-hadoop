@@ -16,6 +16,10 @@ COPY startup.sh /root/
 RUN mkdir -p /opt/hadoop
 
 EXPOSE \
+       # dfs.datanode.address
+       50010 \
+       # dfs.datanode.ipc.address
+       50020 \
        # dfs.namenode.http-address
        50070 \
        # dfs.datanode.http.address

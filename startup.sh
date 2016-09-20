@@ -13,10 +13,6 @@ while true; do
       bin/hdfs namenode -format
       shift
       ;;
-    -u|--create-user)
-      useradd -MU "$2"
-      shift 2
-      ;;
     --) shift
         break
         ;;
@@ -26,7 +22,7 @@ while true; do
   esac
 done
 
-# Allow HDFS service to be access with its external name
+# Allow HDFS service to be access with its hostname
 sed -e "s/HOSTNAME/`hostname`/" -i /opt/hadoop-2.7.3/etc/hadoop/core-site.xml
 sbin/start-dfs.sh
 sbin/start-yarn.sh
