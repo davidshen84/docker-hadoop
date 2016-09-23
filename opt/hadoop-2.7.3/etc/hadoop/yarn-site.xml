@@ -27,4 +27,8 @@
     <name>yarn.nodemanager.remote-app-log-dir</name>
     <value>/user/logs</value>
   </property>
+  <property>
+    <name>yarn.nodemanager.vmem-pmem-ratio</name>
+    <value>3.15</value>
+  </property>
 </configuration>

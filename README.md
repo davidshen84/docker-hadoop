@@ -85,7 +85,7 @@ Windows/Mac*
   ```
 3. Run map/reduce job as a client
   ```sh
-  hadoop jar share/hadoop/mapreduce/hadoo-mapreduce-examples-2.7.3.jar grep input output 'dfs.+'
+  hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar grep input output 'dfs.+'
   ```
 4. Get the output
   ```sh
