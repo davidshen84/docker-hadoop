@@ -20,8 +20,8 @@ docker run -d \
   -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50075:50075 \
   -p 50100-50200:50100-50200 \
   -p 8032:8032 -p 8042:8042 -p 8088:8088 -p 9000:9000 -p 19888:19888 \
-  -v /your/hadoop/root:/opt/hadoop \
-  --name hadoop \
+  --volume /your/hadoop/root:/opt/hadoop \
+  --name hadoop --hostname hadoop \
   hadoop --format-namenode
 ```
 
