@@ -3,8 +3,7 @@ MAINTAINER Xi Shen <davidshen84@gmail.com>
 
 LABEL hadoop=2.7.3 jre=openjdk:8
 
-ENV HADOOP_PREFIX "/opt/hadoop-2.7.3/"
-
+ONBUILD COPY etc /etc
 ONBUILD RUN apt-get update && apt-get install -y \
     ssh
 ONBUILD COPY .ssh /root/.ssh
@@ -39,6 +38,7 @@ EXPOSE \
        # mapreduce.jobhistory.webapp.address
        19888
 
+ENV HADOOP_PREFIX "/opt/hadoop-2.7.3/"
 VOLUME ["/opt/hadoop/"]
 WORKDIR /opt/hadoop-2.7.3/
 
