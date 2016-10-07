@@ -3,8 +3,7 @@ MAINTAINER Xi Shen <davidshen84@gmail.com>
 
 LABEL hadoop=2.7.3 jre=openjdk:8
 
-ONBUILD COPY etc /etc
-ONBUILD RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y \
     ssh
 ONBUILD COPY .ssh /root/.ssh
 
