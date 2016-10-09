@@ -8,12 +8,12 @@ RUN apt-get update && apt-get install -y \
 ONBUILD COPY .ssh /root/.ssh
 
 ADD http://www-us.apache.org/dist/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.tar.gz /opt/
-RUN tar xzf /opt/hadoop-2.7.3.tar.gz -C /opt && \
+RUN mkdir /opt/hadoop && \
+    tar xzf /opt/hadoop-2.7.3.tar.gz --strip-components=1 -C /opt/hadoop && \
     rm /opt/hadoop-2.7.3.tar.gz
 
 COPY opt/ /opt/
 COPY startup.sh /root/
-RUN mkdir -p /opt/hadoop
 
 EXPOSE \
        # dfs.datanode.address
@@ -37,8 +37,8 @@ EXPOSE \
        # mapreduce.jobhistory.webapp.address
        19888
 
-ENV HADOOP_PREFIX "/opt/hadoop-2.7.3/"
-VOLUME ["/opt/hadoop/"]
-WORKDIR /opt/hadoop-2.7.3/
+ENV HADOOP_PREFIX=/opt/hadoop
+VOLUME ["/data"]
+WORKDIR /opt/hadoop
 
 ENTRYPOINT ["/root/startup.sh"]

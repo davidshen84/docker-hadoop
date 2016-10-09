@@ -20,12 +20,12 @@ docker run -d \
   -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50075:50075 \
   -p 50100-50200:50100-50200 \
   -p 8032:8032 -p 8042:8042 -p 8088:8088 -p 9000:9000 -p 19888:19888 \
-  --volume /your/hadoop/root:/opt/hadoop \
+  --volume /your/hadoop/root:/data \
   --name hadoop --hostname hadoop \
   hadoop --format-namenode
 ```
 
-If you map `/opt/hadoop` to your docker host, the changes you made to
+If you map `/data` to your docker host, the changes you made to
 this Hadoop instance can be persisted. `--format-namenode` will do
 `hdfs namenode -format`. If you want persistent storage, you should
 not specify it when you run the container a 2nd time.

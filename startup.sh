@@ -26,5 +26,5 @@ sbin/start-dfs.sh
 sbin/start-yarn.sh
 sbin/mr-jobhistory-daemon.sh --config $HADOOP_PREFIX/etc/hadoop start historyserver
 
-tail -f /opt/hadoop-2.7.3/logs/*.log
+tail -f /opt/hadoop/logs/*.log
 
