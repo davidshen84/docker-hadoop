@@ -30,7 +30,7 @@ export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/jre"
 # data transfer protocol using non-privileged ports.
 #export JSVC_HOME=${JSVC_HOME}
 
-export HADOOP_CONF_DIR="/opt/hadoop-2.7.3/etc/hadoop"
+export HADOOP_CONF_DIR="/opt/hadoop/etc/hadoop"
 
 # Extra Java CLASSPATH elements.  Automatically insert capacity-scheduler.
 for f in $HADOOP_HOME/contrib/capacity-scheduler/*.jar; do
