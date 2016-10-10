@@ -31,4 +31,8 @@
     <name>yarn.nodemanager.vmem-pmem-ratio</name>
     <value>3.15</value>
   </property>
+  <property>
+    <name>yarn.resourcemanager.scheduler.class</name>
+    <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler</value>
+  </property>
 </configuration>
