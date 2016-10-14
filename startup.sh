@@ -10,7 +10,7 @@ ssh-keyscan localhost,0.0.0.0,`hostname` >> ~/.ssh/known_hosts
 while true; do
   case "$1" in
     -f|--format-namenode)
-      bin/hdfs namenode -format
+      bin/hdfs namenode -format -force
       shift
       ;;
     --) shift
