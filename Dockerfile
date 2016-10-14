@@ -1,7 +1,7 @@
 FROM openjdk:8-jre
 MAINTAINER Xi Shen <davidshen84@gmail.com>
 
-LABEL hadoop=2.7.3 jre=openjdk:8
+LABEL hadoop=2.7.3 jre=openjdk-8-jre
 
 RUN apt-get update && apt-get install -y \
     ssh
@@ -12,8 +12,8 @@ RUN mkdir /opt/hadoop && \
     tar xzf /opt/hadoop-2.7.3.tar.gz --strip-components=1 -C /opt/hadoop && \
     rm /opt/hadoop-2.7.3.tar.gz
 
-COPY opt/ /opt/
-COPY startup.sh /root/
+COPY opt/ /opt
+COPY root/ /root
 
 EXPOSE \
        # dfs.datanode.address
