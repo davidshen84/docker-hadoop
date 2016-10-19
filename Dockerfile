@@ -16,20 +16,8 @@ COPY opt/ /opt
 COPY root/ /root
 
 EXPOSE \
-       # dfs.datanode.address
-       50010 \
-       # dfs.datanode.ipc.address
-       50020 \
        # dfs.namenode.http-address
        50070 \
-       # dfs.datanode.http.address
-       50075 \
-       # yarn.app.mapreduce.am.job.client.port-range
-       50100-50200 \
-       # yarn.resourcemanager.address
-       8032 \
-       # yarn.nodemanager.webapp.address
-       8042 \
        # yarn.resourcemanager.webapp.address
        8088 \
        # fs.defaultFS

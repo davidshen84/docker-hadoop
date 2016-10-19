@@ -23,10 +23,6 @@
   </property>
   <property>
     <name>yarn.app.mapreduce.am.staging-dir</name>
-    <value>/user</value>
-  </property>
-  <property>
-    <name>yarn.app.mapreduce.am.job.client.port-range</name>
-    <value>50100-50200</value>
+    <value>/user/hadoop</value>
   </property>
 </configuration>

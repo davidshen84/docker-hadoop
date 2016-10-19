@@ -15,6 +15,7 @@ while true; do
       echo "HELP"
       shift ;;
     -f|--format-namenode)
+      [ -d /data/dfs ] && rm -rf /data/dfs
       bin/hdfs namenode -format -force
       shift ;;
     --) shift
@@ -24,29 +25,30 @@ while true; do
   esac
 done
 
-startup() {
+start() {
   sbin/start-dfs.sh
   sbin/start-yarn.sh
   sbin/mr-jobhistory-daemon.sh --config $HADOOP_PREFIX/etc/hadoop start historyserver
+
+  # it takes a long time for the components to startup in a pseudo-cluster
+  sleep 30
 }
 
-LOGPID=
-teardown() {
+LOG_PID=
+stop() {
   echo "Teardown container!!!"
 
   sbin/mr-jobhistory-daemon.sh --config $HADOOP_PREFIX/etc/hadoop stop historyserver
   sbin/stop-yarn.sh
   sbin/stop-dfs.sh
 
-  kill -SIGTERM $LOGPID
+  kill -SIGTERM $LOG_PID
   exit 0
 }
 
-startup
-trap "teardown" SIGTERM exit
+start
+trap "stop" SIGTERM exit
 
-mkdir -p /opt/hadoop/logs/
-touch /opt/hadoop/logs/test.log
 tail -f /opt/hadoop/logs/*.log &
-LOGPID="$!"
-wait $LOGPID
+LOG_PID="$!"
+wait $LOG_PID

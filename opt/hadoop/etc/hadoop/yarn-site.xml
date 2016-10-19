@@ -25,7 +25,7 @@
   </property>
   <property>
     <name>yarn.nodemanager.remote-app-log-dir</name>
-    <value>/user/logs</value>
+    <value>/user/hadoop/logs</value>
   </property>
   <property>
     <name>yarn.nodemanager.vmem-pmem-ratio</name>
