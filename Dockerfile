@@ -1,16 +1,16 @@
 FROM openjdk:8-jre
 MAINTAINER Xi Shen <davidshen84@gmail.com>
 
-LABEL hadoop=2.7.3 jre=openjdk-8-jre
+LABEL hadoop=3.0.1 jre=openjdk-8-jre
 
 RUN apt-get update && apt-get install -y \
     ssh
 ONBUILD COPY .ssh /root/.ssh
 
-ADD http://www-us.apache.org/dist/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.tar.gz /opt/
+ADD http://www-us.apache.org/dist/hadoop/common/hadoop-3.0.1/hadoop-3.0.1.tar.gz /opt/
 RUN mkdir /opt/hadoop && \
-    tar xzf /opt/hadoop-2.7.3.tar.gz --strip-components=1 -C /opt/hadoop && \
-    rm /opt/hadoop-2.7.3.tar.gz
+    tar xzf /opt/hadoop-3.0.1.tar.gz --strip-components=1 -C /opt/hadoop && \
+    rm /opt/hadoop-3.0.1.tar.gz
 
 COPY opt/ /opt
 COPY root/ /root
