@@ -1,7 +1,8 @@
 FROM openjdk:8-jre
-MAINTAINER Xi Shen <davidshen84@gmail.com>
 
-LABEL hadoop=3.0.1 jre=openjdk-8-jre
+LABEL maintainer="Xi Shen <davidshen84@gmail.com>" \
+      jre=openjdk-8-jre \
+      hadoop=3.0.1
 
 RUN apt-get update && apt-get install -y \
     ssh
